@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.change_email 'verify_email/:request_code', :controller => 'change_email', :action => 'edit'
   # Home Page
-  map.root :controller => "home", :action => "index"
+  map.root :controller => "postings", :action => "index"
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

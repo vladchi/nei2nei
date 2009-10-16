@@ -95,8 +95,6 @@ module GmapsHelper
                   draggable: true
               });
               listenMarkerPosition(marker);
-            } else {
-              alert("Geocode was not successful for the following reason: " + status);
             }
           });
         }
@@ -182,13 +180,44 @@ module GmapsHelper
     end
     string = <<-END_TEXT
       var googleGeocoder = new google.maps.Geocoder();
+
+      function geocodePosition(pos) {
+        googleGeocoder.geocode({
+          latLng: pos
+        }, function(responses) {
+          if (responses && responses.length > 0) {
+            updateMarkerAddress(responses[0].formatted_address);
+          } else {
+            updateMarkerAddress('');
+          }
+        });
+      }
+
+      function updateMarkerAddress(str) {
+        document.getElementById('origin').value = str;
+      }
+
+      function listenMarkerPosition(lmarker) {
+        // Update current position info.
+        geocodePosition(lmarker.get_position());
+
+        // Add dragging event listeners.
+        google.maps.event.addListener(lmarker, 'dragstart', function() {
+          updateMarkerAddress('Dragging...');
+        });
+
+        google.maps.event.addListener(lmarker, 'dragend', function() {
+          geocodePosition(lmarker.get_position());
+        });
+      }
+
       var Demo = {
         map: null,
         mapContainer: document.getElementById('mapContainer'),
         markers: [],
         visibleInfoWindow: null,
         currentStartMarker: null,
-        startMarkerLocation: null,
+        startMarkerLocation: new google.maps.LatLng(-34.397, 150.644),
 
         openInfoWindow: function(infoWindow, marker) {
           return function() {
@@ -219,7 +248,11 @@ module GmapsHelper
           googleGeocoder.geocode( { 'address': str}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               Demo.startMarkerLocation = results[0].geometry.location;
-              Demo.map.setCenter(Demo.startMarkerLocation);
+              Demo.map = new google.maps.Map(Demo.mapContainer, {
+                center: Demo.startMarkerLocation,
+                #{options_string}
+              });
+              //Demo.map.setCenter(Demo.startMarkerLocation);
               if (Demo.currentStartMarker) {
                 Demo.currentStartMarker.setMap(null);
               }
@@ -231,8 +264,8 @@ module GmapsHelper
                 icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
               });
               Demo.currentStartMarker = startMarker;
-            } else {
-              alert("Geocode was not successful for the following reason: " + status);
+              listenMarkerPosition(Demo.currentStartMarker );
+              Demo.placeMarkers();
             }
           });
         },
@@ -242,13 +275,7 @@ module GmapsHelper
         },
 
         init: function() {
-          var startLatLng = new google.maps.LatLng(-34.397, 150.644);
-          Demo.map = new google.maps.Map(Demo.mapContainer, {
-            center: startLatLng,
-            #{options_string}
-          });
           Demo.geocodeStartAddress('#{start_point}');
-          Demo.placeMarkers();
         }
       };
 
