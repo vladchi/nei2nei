@@ -1,0 +1,11 @@
+%h1 Editing category
+
+= error_messages_for :category
+
+- form_for(:category, :url => object_url, :html => { :method => :put }) do |f|
+  = render :partial => "form", :locals => {:f => f}
+  %p= submit_tag "Update"
+
+= link_to 'Show', admin_category_path
+|
+= link_to 'Back', objects_path

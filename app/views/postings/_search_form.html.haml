@@ -1,0 +1,7 @@
+= params[:location] ||= {}
+- form_tag params, :method=>:get do
+  = "Location:"
+  = text_field_tag :origin, params[:origin]
+  = select_tag :within, options_for_select([3, 5, 10, 20, 50], params[:within].to_i || 10)
+  = "kms"
+  = submit_tag "Search"

@@ -1,0 +1,7 @@
+%div[posting_type]
+
+  = h posting_type.name 
+  |
+  = link_to 'Edit', edit_admin_posting_type_path(posting_type)
+  |
+  = link_to 'Destroy', admin_posting_type_path(posting_type), :confirm => 'Really destroy posting_type?', :method => :delete

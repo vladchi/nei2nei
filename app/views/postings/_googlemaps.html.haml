@@ -1,0 +1,28 @@
+- start_location = current_object.location
+- start_location ||= Location.new(:lat => "-34.397", :lng => "150.644")
+- content_for :head do
+  = google_map_tag(start_location)
+.prepend-1.span-12.last= error_messages_for :location
+- f.fields_for :location_attributes, current_object.location do |lf|
+  .span-12.prepend-1= lf.text_field :address_line, :class => "span-12"
+  .span-3.last= button_to_function("Update", "codeAddress($('posting_location_attributes_address_line').value)")
+  = lf.hidden_field :lat
+  = lf.hidden_field :lng
+%br
+#map_canvas.span-16{:style => "height:500px;"}
+%br
+
+- if RAILS_ENV == "development"
+  #infoPanel
+    %b
+      Marker status:
+    #markerStatus
+      %i
+        Click and drag the marker.
+    %b
+      Current position:
+    #info
+    %b
+      Closest matching address:
+    #address
+

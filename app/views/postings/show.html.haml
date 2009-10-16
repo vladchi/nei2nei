@@ -1,0 +1,16 @@
+- title(current_object.title)
+- content_for :head do
+  = simple_google_map_tag(current_object.location)
+
+- content_for :left do
+  %ul.large{:style => "list-style-type:none;"}
+    %li= link_to 'Edit', edit_object_path
+    %li= link_to 'Destroy', object_path, :confirm => 'Really destroy posting?', :method => :delete
+    %li= link_to 'Back', objects_path
+
+.box
+  %p
+    = h current_object.description
+  = image_tag( current_object.photo.url(:medium)) if current_object.photo?
+.span-16.last#map_canvas{:style => "height: 500px;"}
+

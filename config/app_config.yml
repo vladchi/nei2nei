@@ -1,0 +1,15 @@
+development:
+  host: "localhost:3000"
+  admin_email: "Vlad Chi <9i9i9i9i9i@gmail.com>"
+  auto_activate: true
+
+test:
+  host: "localhost:3000"
+  admin_email: "Kowloon Notifier <noreply@noreply.com>"
+  auto_activate: false
+
+production:
+  host: "www.kowloon.com"
+  admin_email: "Kowloon Notifier <noreply@noreply.com>"
+  auto_activate: false
+

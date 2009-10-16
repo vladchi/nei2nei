@@ -1,0 +1,9 @@
+%h1 Viewing posting_type
+
+%div[current_object]= h current_object.name
+
+= link_to 'Edit', edit_admin_posting_type_path
+|
+= link_to 'Destroy', admin_posting_type_path, :confirm => 'Really destroy posting_type?', :method => :delete
+|
+= link_to 'Back', admin_posting_types_path

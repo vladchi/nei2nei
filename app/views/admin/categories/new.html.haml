@@ -1,0 +1,9 @@
+%h1 Creating category
+
+= error_messages_for :category
+
+- form_for(:category, :url => objects_url) do |f|
+  = render :partial => "form", :locals => {:f => f}
+  %p= submit_tag "Create"
+
+= link_to 'Back', objects_path

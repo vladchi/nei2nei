@@ -1,0 +1,11 @@
+.span-3.prepend-1= f.label :title
+.span-11.last= f.text_field :title
+.span-3.prepend-1= f.label :description
+.span-11.last= f.text_area :description
+.span-3.prepend-1= f.label :photo
+.span-11.last= f.file_field :photo
+.span-3.prepend-1= f.label :posting_type
+.span-11.last= f.select :posting_type_id, PostingType.all.map{|pt| [pt.name, pt.id]}
+.span-3.prepend-1= f.label :category
+.span-11.last= f.select :category_id, Category.all.map{|c| [c.name, c.id]}
+
