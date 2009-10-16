@@ -1,6 +1,6 @@
 - title(current_object.title)
 - content_for :head do
-  = simple_google_map_tag(current_object.location)
+  = simple_google_map_tag(current_object)
 
 - content_for :left do
   %ul.large{:style => "list-style-type:none;"}

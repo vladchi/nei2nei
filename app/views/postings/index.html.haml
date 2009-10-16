@@ -2,14 +2,14 @@
 - content_for :left do
   .prepend-1
     %h3= "Category"
-    %ul.large{:style => "list-style-type:none;"}
+    %ul.large{:style => "list-style-type:none;margin:0px;"}
       %li= link_to("All", params.merge(:category => nil))
       - Category.all.each do |c|
         %li= link_to(c.name, params.merge(:category => c.id))
   %ht.plain
   .prepend-1
     %h3= "Posting type"
-    %ul.large{:style => "list-style-type:none;"}
+    %ul.large{:style => "list-style-type:none;margin:0px;"}
       %li= link_to("All", params.merge(:posting_type => nil))
       - PostingType.all.each do |pt|
         %li= link_to(pt.name, params.merge(:posting_type => pt.id))
@@ -21,7 +21,12 @@
   %hr.plain
   #mapContainer
   %hr.plain
-  #postings= render :partial => '/postings/posting', :collection => current_objects
+  - if current_objects.any?
+    #postings= render :partial => '/postings/posting', :collection => current_objects
+  - else
+    = "No postings found. Would you like to"
+    = link_to("create", new_posting_path)
+    = "one?"
   = will_paginate current_objects
   = multimarker_map(params[:origin], current_objects)
 

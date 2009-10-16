@@ -106,8 +106,8 @@ module GmapsHelper
     javascript_tag @google_map
   end
 
-  def simple_google_map_tag(location, options={})
-    options = {:zoom => 12, :center => 'Demo.startMarkerLocation', :mapTypeId => 'google.maps.MapTypeId.ROADMAP'}.merge(options)
+  def simple_google_map_tag(posting, options={})
+    options = {:zoom => 12, :center => 'latLng', :mapTypeId => 'google.maps.MapTypeId.ROADMAP'}.merge(options)
     options_array = []
     options.each_pair do |k,v| options_array << k.to_s+": "+v.to_s end
     options_string = options_array.join(",\n")
@@ -117,14 +117,14 @@ module GmapsHelper
       var marker;
 
       function initialize() {
-        var latLng = new google.maps.LatLng(#{location.lat}, #{location.lng});
+        var latLng = new google.maps.LatLng(#{posting.location.lat}, #{posting.location.lng});
         var myOpts = {
           #{options_string}
         };
         map = new google.maps.Map(document.getElementById("map_canvas"), myOpts);
         marker = new google.maps.Marker({
           position: latLng,
-          title: 'Test',
+          title: '#{h(posting.title)}',
           map: map,
           draggable: false
         });
