@@ -4,8 +4,9 @@
 
 - content_for :left do
   %ul.large{:style => "list-style-type:none;"}
-    %li= link_to 'Edit', edit_object_path
-    %li= link_to 'Destroy', object_path, :confirm => 'Really destroy posting?', :method => :delete
+    - permit(PostingsController::UPDATE_COND) do
+      %li= link_to 'Edit', edit_object_path
+      %li= link_to 'Destroy', object_path, :confirm => 'Really destroy posting?', :method => :delete
     %li= link_to 'Back', objects_path
 
 .box

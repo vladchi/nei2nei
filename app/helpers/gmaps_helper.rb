@@ -1,5 +1,5 @@
 module GmapsHelper
-    def google_map_tag(location, options={})
+  def google_map_tag(location, options={})
     options = {:zoom => 12, :center => 'latLng', :mapTypeId => 'google.maps.MapTypeId.ROADMAP'}.merge(options)
     options_array = []
     options.each_pair do |k,v| options_array << k.to_s+": "+v.to_s end
@@ -73,7 +73,6 @@ module GmapsHelper
         map = new google.maps.Map(document.getElementById("map_canvas"), myOpts);
         marker = new google.maps.Marker({
           position: latLng,
-          title: 'Test',
           map: map,
           draggable: true
         });
@@ -91,7 +90,6 @@ module GmapsHelper
               marker = new google.maps.Marker({
                   map: map,
                   position: results[0].geometry.location,
-                  title: 'Test',
                   draggable: true
               });
               listenMarkerPosition(marker);

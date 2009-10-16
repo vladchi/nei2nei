@@ -1,27 +1,28 @@
 
 - content_for :left do
-  .prepend-1.last
+  .prepend-1.last{:style => "margin-left: 15px;padding: 0px;"}
     %h3= "Category"
     %ul.large{:style => "list-style-type:none;margin:0px;"}
       %li= link_to("All", params.merge(:category => nil))
       - Category.all.each do |c|
         %li= link_to(c.name, params.merge(:category => c.id))
   %ht.plain
-  %ht.plain
-  .prepend-1.last
+  %br
+  .prepend-1.last{:style => "margin-left: 15px;padding: 0px;"}
     %h3= "Posting type"
     %ul.large{:style => "list-style-type:none;margin:0px;"}
       %li= link_to("All", params.merge(:posting_type => nil))
       - PostingType.all.each do |pt|
         %li= link_to(pt.name, params.merge(:posting_type => pt.id))
 
-.prepend-1
-  .prepend-12.span-4.last= link_to 'Add Posting', new_object_path
-  %hr.plain
+.prepend-14.span-2.last= link_to 'Add Posting', new_object_path
+%hr.plain
+.prepend-1.last{:style => "margin-left: 10px;padding: 0px;"}
   = render :partial => "/postings/search_form"
-  %hr.plain
-  #mapContainer
-  %hr.plain
+%hr.plain
+#mapContainer.span-16
+%hr.plain
+.prepend-1.append-1.last
   - if current_objects.any?
     #postings= render :partial => '/postings/posting', :collection => current_objects
   - else

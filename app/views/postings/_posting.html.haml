@@ -2,7 +2,8 @@
   = link_to h(posting.title), "", {:id => "show_posting_#{posting.id}"}
   |
   = link_to 'Show', object_path(posting)
-  |
-  = link_to 'Edit', edit_object_path(posting)
-  |
-  = link_to 'Destroy', object_path(posting), :confirm => 'Really destroy posting?', :method => :delete
+  - permit( PostingsController::UPDATE_COND, :posting => posting ) do
+    = "|"
+    = link_to 'Edit', edit_object_path(posting)
+    = "|"
+    = link_to 'Destroy', object_path(posting), :confirm => 'Really destroy posting?', :method => :delete

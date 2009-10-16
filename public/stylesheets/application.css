@@ -138,40 +138,11 @@ hr.plain {background:#F8F8F8;color:#F8F8F8;}  /* same as background color */
 .float_right{float:right;}
 .float_left{float:left;}
 
-#sideContainer {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 10px 0 0;
-    border: 1px solid #676767;
-    background-color: #eee;
-    overflow: auto;
-  }
-  #sideContainer li {
-    font-size: 0.9em;
-    border-bottom: 1px solid #aaa;
-    padding: 5px;
-  }
+
 
   #mapContainer {
-    
-    width: 500px;
-    height: 400px;
+    height: 500px;
   }
 
-  #generateLink {
-    background-color: #fff;
-    border: 2px ridge #000;
-    color: #00c;
-    cursor: pointer;
-    font-size: 0.75em;
-    font-weight: bold;
-    left: 300px;
-    padding: 1px 2px;
-    position: relative;
-    text-align: center;
-    text-decoration: underline;
-    top: 24px;
-    width: 130px;
-    z-index: 1000;
-  }
+
 

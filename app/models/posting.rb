@@ -11,4 +11,9 @@ class Posting < ActiveRecord::Base
   acts_as_mappable :through => :location
 
   validates_presence_of :title, :description, :category_id, :posting_type_id
+
+  def accepts_role?(role, ruser)
+    return self.user == ruser if role.to_s=='owner'
+    super
+  end
 end

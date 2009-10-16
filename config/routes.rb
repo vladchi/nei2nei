@@ -21,5 +21,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   # Catch all url
-  map.connect '*path', :controller => "home", :action => "index"
+  map.connect '*path', :controller => "postings", :action => "index"
 end

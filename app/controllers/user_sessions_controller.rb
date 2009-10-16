@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
 # added in the previous line  ##################
     if @user_session.save
       flash[:notice] = t('user_sessions.create.success_msg')
-      redirect_back_or_default edit_account_url
+      redirect_back_or_default root_url
     else
       render :action => :new
     end

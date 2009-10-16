@@ -1,5 +1,13 @@
 class PostingsController < ApplicationController
+  
+  before_filter :preload
+  def preload;  load_object or build_object   end
+  
   geocode_ip_address
+  
+  UPDATE_COND = "owner of :posting or admin or site_admin"
+
+  permit UPDATE_COND, :only => [:edit, :update, :delete]
   
   make_resourceful do
     actions :all
