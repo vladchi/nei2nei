@@ -32,7 +32,7 @@ test:
 
 production:
   adapter: postgresql
-  database: neilist_production
+  database: neilist_development
   username: postgres
   password: obsgroup
   encoding: unicode
