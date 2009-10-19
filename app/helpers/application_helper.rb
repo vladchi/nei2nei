@@ -33,4 +33,14 @@ module ApplicationHelper
 #     Time.now
 #  end
 
+  def params_for_filters
+    output_params = {}
+    [:category, :posting_type, :origin].each do |f|
+      if params[f]
+        output_params[f] = params[f]
+      end
+    end
+    output_params
+  end
+
 end

@@ -1,4 +1,7 @@
 - start_location = current_object.location
+- if params[:origin]
+  - start_location = Location.new(:address_line => params[:origin])
+  - start_location.valid?
 - start_location ||= Location.new(:lat => "-34.397", :lng => "150.644")
 - content_for :head do
   = google_map_tag(start_location)

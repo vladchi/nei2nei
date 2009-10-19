@@ -15,7 +15,7 @@
       - PostingType.all.each do |pt|
         %li= link_to(pt.name, params.merge(:posting_type => pt.id))
 
-.prepend-14.span-2.last= link_to 'Add Posting', new_object_path
+.prepend-14.span-2.last= link_to 'Add Posting', new_object_path(params_for_filters)
 %hr.plain
 .prepend-1.last{:style => "margin-left: 10px;padding: 0px;"}
   = render :partial => "/postings/search_form"
@@ -28,7 +28,7 @@
   - else
     .box
       = "No postings found. Would you like to"
-      = link_to("create", new_posting_path)
+      = link_to("create", new_posting_path(params_for_filters))
       = "one?"
   = will_paginate current_objects
   = multimarker_map(params[:origin], current_objects)
