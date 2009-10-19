@@ -22,15 +22,18 @@ config.action_view.cache_template_loading            = true
 # config.action_controller.asset_host = "http://assets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
- config.action_mailer.raise_delivery_errors = true
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address        => "smtp.gmail.com",
+  :port           => 587,
+  :domain         => "neiworld.com",
+  :authentication => :login,
+  :user_name      => "<email>",
+  :password       => "<password>"
+}
 
 # Enable threaded mode
 # config.threadsafe!
 
-ActionMailer::Base.delivery_method = :sendmail
-
-ActionMailer::Base.sendmail_settings = {
-:location       => '/usr/sbin/sendmail',
-:arguments      => '-i -t -f noreply@neiworld.com'
-}
 

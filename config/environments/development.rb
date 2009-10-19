@@ -15,12 +15,14 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = true
-
-ActionMailer::Base.delivery_method = :sendmail
-
-ActionMailer::Base.sendmail_settings = {
-:location       => '/usr/sbin/sendmail',
-:arguments      => '-i -t -f noreply@neiworld.com'
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address        => "smtp.gmail.com",
+  :port           => 587,
+  :domain         => "neiworld.com",
+  :authentication => :login,
+  :user_name      => "<email>",
+  :password       => "<password>"
 }
 
 config.gem "ruby-debug"

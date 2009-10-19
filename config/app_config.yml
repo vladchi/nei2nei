@@ -1,15 +1,15 @@
 development:
   host: "localhost:3000"
-  admin_email: "Vlad Chi <9i9i9i9i9i@gmail.com>"
+  admin_email: "admin@neiworld.com"
   auto_activate: true
 
 test:
   host: "localhost:3000"
-  admin_email: "Kowloon Notifier <noreply@noreply.com>"
+  admin_email: "admin@neiworld.com"
   auto_activate: false
 
 production:
   host: "www.neiworld.com"
-  admin_email: "noreply@neiworld.com"
+  admin_email: "admin@neiworld.com"
   auto_activate: true
 
