@@ -1,5 +1,5 @@
 class PostingsController < ApplicationController
-  
+  before_filter :require_user, :except => [:index, :show]
   before_filter :preload
   def preload;  load_object or build_object   end
   
