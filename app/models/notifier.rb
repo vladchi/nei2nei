@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 #  default_url_options[:port] = 3000
 
   def password_reset_instructions(user)
-    subject       "重置密碼方法 - Password Reset Instructions"
+    subject       "Password Reset Instructions"
     from          APP_CONFIG[:admin_email]
     recipients    user.email
     sent_on       Time.now
@@ -12,7 +12,7 @@ class Notifier < ActionMailer::Base
   end
 
   def activation_instructions(user)
-    subject       "帳戶啟動方法 - Activation Instructions"
+    subject       "Activation Instructions"
     from          APP_CONFIG[:admin_email]
     recipients    user.email
     sent_on       Time.now
@@ -21,7 +21,7 @@ class Notifier < ActionMailer::Base
   end
 
   def activation_confirmation(user)
-    subject       "帳戶啟動完畢- Activation Complete"
+    subject       "Activation Complete"
     from          APP_CONFIG[:admin_email]
     recipients    user.email
     sent_on       Time.now
@@ -30,7 +30,7 @@ class Notifier < ActionMailer::Base
   end
 
   def email_verification(user, new_email, request_code)
-    subject       "確認新電郵地址 - Confirm New Email Address"
+    subject       "Confirm New Email Address"
     from          APP_CONFIG[:admin_email]
     recipients    new_email
     sent_on       Time.now
