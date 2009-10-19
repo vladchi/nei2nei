@@ -26,3 +26,11 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+ActionMailer::Base.delivery_method = :sendmail
+
+ActionMailer::Base.sendmail_settings = {
+:location       => '/usr/sbin/sendmail',
+:arguments      => '-i -t -f noreply@neiworld.com'
+}
+

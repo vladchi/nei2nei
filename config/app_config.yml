@@ -9,7 +9,7 @@ test:
   auto_activate: false
 
 production:
-  host: "neiworld.com"
+  host: "www.neiworld.com"
   admin_email: "noreply@neiworld.com"
   auto_activate: true
 
