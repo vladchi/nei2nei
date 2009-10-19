@@ -52,21 +52,25 @@
         \&nbsp;
       #main_body.span-24.last
         /Left column here
-        .span-4
+        .span-6
           \&nbsp;
           = yield :left
         /Middle column here
-        #content.span-16
-          %hr.plain
-          - if show_title?
-            %h1= h yield(:title)
-          = flash_messages
-          = yield :layout
+        #content.span-18.last
+          #inner.span-16.prepend-1.last
+            %hr.plain
+            - if show_title?
+              %h1= h yield(:title)
+            = flash_messages
+            = yield :layout
         /Right column here
-        .span-4.last
-          = yield :right
-          \&nbsp;
+        /.span-4.last
+        /  = yield :right
+        /  \&nbsp;
       #footer.span-24.last
-        %p= "Copyright &copy; 2009 dontrush.org"
+        %p= "Copyright &copy; 2009 nieworld.org"
+        - if RAILS_ENV == "production"
+          = google_analytics_tag
+          = feedback_tag
     /additional elements e.g. javascript
     = yield :foot

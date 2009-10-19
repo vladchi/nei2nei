@@ -43,4 +43,40 @@ module ApplicationHelper
     output_params
   end
 
+  def google_analytics_tag
+    analytics_includes = <<-ANALYTICS
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    ANALYTICS
+    analytics = <<-ANALYTICS
+      try {
+      var pageTracker = _gat._getTracker("UA-11174738-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    ANALYTICS
+    javascript_tag(analytics_includes)+javascript_tag(analytics)
+  end
+
+  def feedback_tag
+    feedback_includes = <<-IFEEDBACK
+      var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
+      document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+    IFEEDBACK
+    feedback = <<-FEEDBACK
+      UserVoice.Tab.show({
+        /* required */
+        key: 'neiworld',
+        host: 'neiworld.uservoice.com',
+        forum: '31561',
+        /* optional */
+        alignment: 'left',
+        background_color:'#f00',
+        text_color: 'white',
+        hover_color: '#06C',
+        lang: 'en'
+      })
+    FEEDBACK
+    javascript_tag(feedback_includes)+javascript_tag(feedback)
+  end
+
 end
