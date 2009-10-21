@@ -2,9 +2,9 @@
 - if params[:origin] && !start_location
   - start_location = Location.new(:address_line => params[:origin])
   - start_location.valid?
-- if session[:geo_location]
-  - guest_location = session[:geo_location]
-  = start_location ||= Location.new(:lat => guest_location.lat, :lng => guest_location.lng)
+/- if session[:geo_location]
+/  - guest_location = session[:geo_location]
+/  = start_location ||= Location.new(:lat => guest_location.lat, :lng => guest_location.lng)
 - start_location ||= Location.new(:lat => "37.7749295", :lng => "-122.4194155")
 - content_for :head do
   = google_map_tag(start_location)

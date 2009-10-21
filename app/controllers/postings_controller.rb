@@ -2,7 +2,8 @@ class PostingsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
   before_filter :preload
   def preload;  load_object or build_object   end
-  before_filter :ensure_current_posting_url, :only => :show 
+  before_filter :ensure_current_posting_url, :only => :show
+  before_filter :redirect_to_saved_search, :only => :index
   
   geocode_ip_address
   
@@ -24,10 +25,13 @@ class PostingsController < ApplicationController
 
   def current_objects
     options = {:conditions => {}}
-    if params[:origin] && params[:within]
+    if (params[:origin] && params[:within]) 
+      
       options[:origin] = params[:origin]
-      options[:order] = 'distance'
       options[:within] = params[:within]
+      session[:current_location_search] = {:origin => params[:origin], :within =>  params[:within]}
+      
+      options[:order] = 'distance'
       [:category, :posting_type].each do |col|
         options[:conditions][:"#{col.to_s}_id"] = params[col] if params[col]
       end
@@ -45,6 +49,12 @@ class PostingsController < ApplicationController
   
   def ensure_current_posting_url
     redirect_to @posting, :status => :moved_permanently if @posting.has_better_id?
+  end
+
+  def redirect_to_saved_search
+    if session[:current_location_search] && !params[:origin] && !params[:within]
+      redirect_to params.merge(session[:current_location_search])
+    end
   end
 
 end
