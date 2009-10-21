@@ -51,8 +51,6 @@
           - else
             = link_to_unless_current t('app.menu.postings'), postings_path
             |
-            = link_to_unless_current t('app.menu.admin_users'), admin_users_path
-            |
             = link_to_unless_current t('app.menu.my_account'), edit_account_path
             |
             = link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
@@ -81,7 +79,7 @@
             %li.span-2{:style => "float:left;"}= link_to("About Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Contact Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Blog", "")
-            %span= "Copyright &copy; 2009 nieworld.org"
+            %span= "Copyright &copy; 2009 nieworld.com"
         - if RAILS_ENV == "production"
           = google_analytics_tag
           = feedback_tag
