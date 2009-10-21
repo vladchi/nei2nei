@@ -42,18 +42,16 @@
           = link_to("", "", :class => "addthis_button_twitter")
         %script{:type => "text/javascript", :src => "http://s7.addthis.com/js/250/addthis_widget.js#pub=xa-4adccf0d4d2050cb"}
         %span{ :style => "float: right" }
+          = link_to "Home", postings_path
+          |
           - if !current_user
-            = link_to_unless_current "Home", postings_path
+            = link_to t('app.menu.register'), new_account_path
             |
-            = link_to_unless_current t('app.menu.register'), new_account_path
-            |
-            = link_to_unless_current t('app.menu.login'), new_user_session_path
+            = link_to t('app.menu.login'), new_user_session_path
           - else
-            = link_to_unless_current t('app.menu.postings'), postings_path
+            = link_to t('app.menu.my_account'), edit_account_path
             |
-            = link_to_unless_current t('app.menu.my_account'), edit_account_path
-            |
-            = link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
+            = link_to t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
         .clear
       #main_body.span-24.last
         /Left column here
@@ -79,7 +77,7 @@
             %li.span-2{:style => "float:left;"}= link_to("About Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Contact Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Blog", "")
-            %span= "Copyright &copy; 2009 nieworld.com"
+            %li{:style => "float:left;"}= "Copyright &copy; 2009 nieworld.com"
         - if RAILS_ENV == "production"
           = google_analytics_tag
           = feedback_tag

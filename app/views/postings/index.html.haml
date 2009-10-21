@@ -18,11 +18,11 @@
 %hr.plain
 .prepend-1.prepend-top.last{:style => "margin-left: 15px;padding: 0px;"}
   %ul.large{:style => "list-style-type:none;margin:0px;"}
-    %li.span-2.prepend-1{:style => "float:left;"}= link_to("All", params.merge(:posting_type => nil))
+    %li{:style => "float:left;margin-left:15px;"}= link_to("All", params.merge(:posting_type => nil))
     - PostingType.all.each do |pt|
       %li{:style => "float:left;margin-left:15px;"}= link_to(pt.name, params.merge(:posting_type => pt.id))
   .clear
-.prepend-1.prepend-top.append-1.last
+.prepend-top.last
   - if current_objects.any?
     #postings= render :partial => '/postings/posting', :collection => current_objects
   - else
