@@ -12,6 +12,8 @@ class Posting < ActiveRecord::Base
 
   validates_presence_of :title, :description, :category_id, :posting_type_id
 
+  has_friendly_id :title, :use_slug => true
+
   def accepts_role?(role, ruser)
     return self.user == ruser if role.to_s=='owner'
     super

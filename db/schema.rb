@@ -9,13 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091008135542) do
+ActiveRecord::Schema.define(:version => 20091021110030) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["name"], :name => "index_categories_on_name"
 
   create_table "locations", :force => true do |t|
     t.string   "locatable_type"
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20091008135542) do
     t.datetime "updated_at"
   end
 
+  add_index "posting_types", ["name"], :name => "index_posting_types_on_name"
+
   create_table "postings", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -48,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20091008135542) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "cached_slug"
   end
 
   create_table "roles", :force => true do |t|
@@ -79,6 +84,18 @@ ActiveRecord::Schema.define(:version => 20091008135542) do
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope",          :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "user_emails", :force => true do |t|
     t.integer  "user_id",                                :null => false

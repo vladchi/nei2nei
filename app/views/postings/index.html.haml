@@ -1,9 +1,8 @@
 
 - content_for :left do
   .prepend-1.last{:style => "margin-left: 15px;padding: 0px;"}
-    %h3= "Categories"
     %ul.large{:style => "list-style-type:none;margin:0px;"}
-      %li= link_to("All", params.merge(:category => nil))
+      %li= link_to("All Categories", params.merge(:category => nil))
       - Category.all.each do |c|
         %li= link_to(c.name, params.merge(:category => c.id))
   %ht.plain
@@ -26,10 +25,11 @@
   - if current_objects.any?
     #postings= render :partial => '/postings/posting', :collection => current_objects
   - else
-    .box
-      = "No postings found. Would you like to"
-      = link_to("create", new_posting_path(params_for_filters))
-      = "one?"
+    - unless @show_search_advise
+      .box
+        = "No postings found. Would you like to"
+        = link_to("create", new_posting_path(params_for_filters))
+        = "one?"
   = will_paginate current_objects
   = multimarker_map(params[:origin], current_objects)
 
