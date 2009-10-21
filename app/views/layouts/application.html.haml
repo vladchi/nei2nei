@@ -2,7 +2,7 @@
 %html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %title
-      = h(yield(:title) || "NeiWorld")
+      = h(yield(:title) || "www.neiworld.com Neighbors World. Meet good people around you")
     %meta{ :content => "text/xhtml; charset=utf-8", "http-equiv" => "content-type" }
     %link{ :href => "/images/favicon.ico", :rel => "icon", :type => "image/png" }
     %meta{ :name => "keywords", :content => h(@meta_keywords.gsub(/&lt;\/?[^&gt;]*&gt;/, "&quot;&quot;")) }
@@ -31,15 +31,23 @@
       /    %span.prepend-2
       /      = t("app.site_subtitle")
       #nav.span-24.last.menu_bar
+        %h1{:style => "color:#0E394E;float:left;width:500px;margin: 0px 0px 0px 15px;"}= "Neighbor World"
+        .addthis_toolbox.addthis_default_style{:style => "float:right;"}
+          %span.addthis_separator= "|"
+          = link_to("Share", "http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4adccf0d4d2050cb", :class => "addthis_button_compact")
+          %span.addthis_separator= "|"
+          = link_to("", "", :class => "addthis_button_facebook")
+          = link_to("", "", :class => "addthis_button_myspace")
+          = link_to("", "", :class => "addthis_button_google")
+          = link_to("", "", :class => "addthis_button_twitter")
+        %script{:type => "text/javascript", :src => "http://s7.addthis.com/js/250/addthis_widget.js#pub=xa-4adccf0d4d2050cb"}
         %span{ :style => "float: right" }
           - if !current_user
-            = link_to_unless_current t('app.menu.postings'), postings_path
+            = link_to_unless_current "Home", postings_path
             |
             = link_to_unless_current t('app.menu.register'), new_account_path
             |
             = link_to_unless_current t('app.menu.login'), new_user_session_path
-            |
-            = link_to_unless_current t('app.menu.forgot_password'), new_password_reset_path
           - else
             = link_to_unless_current t('app.menu.postings'), postings_path
             |
@@ -48,8 +56,7 @@
             = link_to_unless_current t('app.menu.my_account'), edit_account_path
             |
             = link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
-          \&nbsp;
-        \&nbsp;
+        .clear
       #main_body.span-24.last
         /Left column here
         .span-6
@@ -67,8 +74,14 @@
         /.span-4.last
         /  = yield :right
         /  \&nbsp;
-      #footer.span-24.last
-        %p= "Copyright &copy; 2009 nieworld.org"
+      #footer.span-24.append-bottom.last
+        .append-bottom.last{:style => "text-align:center;"}
+          %ul{:style => "list-style-type:none;margin:0px;"}
+            %li.span-2{:style => "float:left;"}= link_to("Home", postings_path)
+            %li.span-2{:style => "float:left;"}= link_to("About Us", "")
+            %li.span-2{:style => "float:left;"}= link_to("Contact Us", "")
+            %li.span-2{:style => "float:left;"}= link_to("Blog", "")
+            %span= "Copyright &copy; 2009 nieworld.org"
         - if RAILS_ENV == "production"
           = google_analytics_tag
           = feedback_tag

@@ -70,7 +70,7 @@ body {background-color: #E0E0E0;}
  margin: 0;
  padding: 5px 0px;
 }
-.menu_bar a {
+/*.menu_bar a {
  color: #0E394E;
  background-color: #809AA7;
  text-decoration: none;
@@ -81,7 +81,7 @@ body {background-color: #E0E0E0;}
 .menu_bar a:hover {
  color: #809AA7;
  background-color: #0E394E;
-}
+}*/
 
 /* === FLASH MESSAGES === */
 div#flash-notice {
