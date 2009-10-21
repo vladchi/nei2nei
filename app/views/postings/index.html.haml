@@ -20,7 +20,7 @@
   %ul.large{:style => "list-style-type:none;margin:0px;"}
     %li.span-2.prepend-1{:style => "float:left;"}= link_to("All", params.merge(:posting_type => nil))
     - PostingType.all.each do |pt|
-      %li.span-2.prepend-1{:style => "float:left;"}= link_to(pt.name, params.merge(:posting_type => pt.id))
+      %li.span-2{:style => "float:left;"}= link_to(pt.name, params.merge(:posting_type => pt.id))
   .clear
 .prepend-1.prepend-top.append-1.last
   - if current_objects.any?
