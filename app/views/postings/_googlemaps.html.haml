@@ -2,18 +2,20 @@
 - if params[:origin]
   - start_location = Location.new(:address_line => params[:origin])
   - start_location.valid?
-- start_location ||= Location.new(:lat => "-34.397", :lng => "150.644")
+- start_location ||= Location.new(:lat => "37.7749295", :lng => "-122.4194155")
 - content_for :head do
   = google_map_tag(start_location)
-.prepend-1.span-12.last= error_messages_for :location
+.span-12.last= error_messages_for :location
+.clear
 - f.fields_for :location_attributes, current_object.location do |lf|
-  .span-12.prepend-1= lf.text_field :address_line, :class => "span-12"
+  .span-14= text_box_with_value(lf, start_location, :text_field, :address_line, 'Your Address or Zip code', {:class => "span-14"})
+  
   .span-3.last= button_to_function("Update", "codeAddress($('posting_location_attributes_address_line').value)")
   = lf.hidden_field :lat
   = lf.hidden_field :lng
-%br
+%hr.plain
 #map_canvas.span-16{:style => "height:500px;"}
-%br
+%hr.plain
 
 - if RAILS_ENV == "development"
   #infoPanel

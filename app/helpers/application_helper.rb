@@ -79,4 +79,10 @@ module ApplicationHelper
     javascript_tag(feedback_includes)+javascript_tag(feedback)
   end
 
+  def category_list_item(title, category_id, params, options={})
+    content_tag(:li, link_to(title, params.merge(:category => category_id)), 
+      :style => "padding-left: 5px;",
+      :class => ("selected_category" if params[:category].to_s == category_id.to_s))
+  end
+
 end

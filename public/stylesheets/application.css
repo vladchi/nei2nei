@@ -133,7 +133,16 @@ div#flash-error {
  list-style: square;
 }
 
-hr.plain {background:#F8F8F8;color:#F8F8F8;}  /* same as background color */
+.selected_category{
+  background-color: #fff;
+}
+
+.posting_description{
+  height: 80px;
+  width: 520px;
+}
+
+hr.plain {background:#ffffff;color:#ffffff;}  /* same as background color */
 
 .float_right{float:right;}
 .float_left{float:left;}
@@ -196,6 +205,8 @@ hr.plain {background:#F8F8F8;color:#F8F8F8;}  /* same as background color */
 
 .margin_right10 {
   margin-right: 10px; }
+.margin_right15 {
+  margin-right: 15px; }
 
 .margin_left2 {
   margin-left: 2px; }

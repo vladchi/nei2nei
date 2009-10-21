@@ -17,7 +17,7 @@
       %span.boldtext= "Address:"
       = h @posting.location.address_line
 .title_line
-  %h2.float_left{:style => "width: 300px"}=  h @posting.title
+  %h2.float_left=  h @posting.title
   %ul.float_right{:style => "list-style-type:none;"}
     %li.float_left{:style => "margin-left: 15px;"}= link_to 'Back', objects_path
     - permit(PostingsController::UPDATE_COND) do

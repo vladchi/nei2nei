@@ -77,7 +77,7 @@ module GmapsHelper
           draggable: true
         });
 
-        listenMarkerPosition(marker);
+        //listenMarkerPosition(marker);
       }
 
       function codeAddress(str) {
@@ -215,7 +215,7 @@ module GmapsHelper
         markers: [],
         visibleInfoWindow: null,
         currentStartMarker: null,
-        startMarkerLocation: new google.maps.LatLng(-34.397, 150.644),
+        startMarkerLocation: new google.maps.LatLng(37.7749295, -122.4194155),
 
         openInfoWindow: function(infoWindow, marker) {
           return function() {

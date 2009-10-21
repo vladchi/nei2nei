@@ -1,16 +1,23 @@
-.span-3.prepend-1= f.label :title
-.span-11.last= f.text_field :title
-.span-3.prepend-1= f.label :description
-.span-11.last= f.text_area :description
-.span-3.prepend-1= f.label :photo
-.span-11.last= f.file_field :photo
-.span-3.prepend-1= f.label :posting_type
+.span-3= f.label :title
+.last= text_box_with_value(f, current_object, :text_field, :title, "Need bike for weekend or Share my WiFi(free)", {:class => "span-14"})
+.clear
+.span-3= f.label :description
+.last
+  = text_box_with_value(f, current_object, :text_area, :description, |
+    "Please provide all the details of your deal and explain how to reach you", {:class => "posting_description"}) |
+.clear
+.span-3= f.label :photo
+.span-14.last= f.file_field :photo
+.clear
+.span-3= f.label :posting_type
 - if params[:posting_type]
-  .span-11.last= f.select :posting_type_id, PostingType.all.map{|pt| [pt.name, pt.id]}, :selected => params[:posting_type].to_i
+  .span-14.last= f.select :posting_type_id, PostingType.all.map{|pt| [pt.name, pt.id]}, {:selected => params[:posting_type].to_i}, {:style => "width:200px;"}
 - else
-  .span-11.last= f.select :posting_type_id, PostingType.all.map{|pt| [pt.name, pt.id]}
-.span-3.prepend-1= f.label :category
+  .span-14.last= f.select :posting_type_id, PostingType.all.map{|pt| [pt.name, pt.id]}, {}, {:style => "width:200px;"}
+.clear
+.span-3= f.label :category
 - if params[:category]
-  .span-11.last= f.select :category_id, Category.all.map{|c| [c.name, c.id]}, :selected => params[:category].to_i
+  .span-14.last= f.select :category_id, Category.all.map{|c| [c.name, c.id]}, {:selected => params[:category].to_i}, {:style => "width:200px;"}
 - else
-  .span-11.last= f.select :category_id, Category.all.map{|c| [c.name, c.id]}
+  .span-14.last= f.select :category_id, Category.all.map{|c| [c.name, c.id]}, {}, {:style => "width:200px;"}
+.clear

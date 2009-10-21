@@ -1,5 +1,3 @@
-%h1 Creating posting
-
 = error_messages_for :posting
 
 - form_for(:posting, :url => objects_url, :html => { :multipart => true }) do |f|
@@ -9,6 +7,9 @@
   #google_maps_box= render :partial => "/postings/googlemaps", :locals => {:f => f}
   .clear
   %hr.plain
-  %p= submit_tag "Create"
+  %p
+    = submit_tag "Create"
+    or
+    = link_to 'Back', objects_path
 
-= link_to 'Back', objects_path
+

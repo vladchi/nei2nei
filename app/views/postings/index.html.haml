@@ -2,9 +2,10 @@
 - content_for :left do
   .prepend-1.last{:style => "margin-left: 15px;padding: 0px;"}
     %ul.large{:style => "list-style-type:none;margin:0px;"}
-      %li= link_to("All Categories", params.merge(:category => nil))
+      = category_list_item("All Categories", nil, params)
+      
       - Category.all.each do |c|
-        %li= link_to(c.name, params.merge(:category => c.id))
+        = category_list_item(c.name, c.id, params)
   %ht.plain
   
 
@@ -15,7 +16,7 @@
 %hr.plain
 #mapContainer.span-17
 %hr.plain
-.prepend-1.prepend-top.last{:style => "margin-left: 15px;padding: 0px;"}
+.prepend-1.prepend-top.last{:style => "margin-left: 5px;padding: 0px;"}
   %ul.large{:style => "list-style-type:none;margin:0px;"}
     %li{:style => "float:left;margin-left:15px;"}= link_to("All", params.merge(:posting_type => nil))
     - PostingType.all.each do |pt|
