@@ -3,15 +3,31 @@
   = simple_google_map_tag(current_object)
 
 - content_for :left do
-  %ul.large{:style => "list-style-type:none;"}
+  .sidebar_box{:style => "margin-left: 15px;"}
+    .margin_top10
+      %span.boldtext= "Category:"
+      = h @posting.category
+    .margin_top10
+      %span.boldtext= "Type:"
+      = h @posting.posting_type
+    .margin_top10
+      %span.boldtext= "Created at:"
+      = @posting.created_at.strftime("%b %d")
+    .margin_top10
+      %span.boldtext= "Address:"
+      = h @posting.location.address_line
+.title_line
+  %h2.float_left{:style => "width: 300px"}=  h @posting.title
+  %ul.float_right{:style => "list-style-type:none;"}
+    %li.float_left{:style => "margin-left: 15px;"}= link_to 'Back', objects_path
     - permit(PostingsController::UPDATE_COND) do
-      %li= link_to 'Edit', edit_object_path
-      %li= link_to 'Destroy', object_path, :confirm => 'Really destroy posting?', :method => :delete
-    %li= link_to 'Back', objects_path
-
+      %li.float_left{:style => "margin-left: 15px;"}= link_to 'Edit', edit_object_path
+      %li.float_left{:style => "margin-left: 15px;"}= link_to 'Destroy', object_path, :confirm => 'Really destroy posting?', :method => :delete
+  .clear
 .box
   %p
     = h current_object.description
   = image_tag( current_object.photo.url(:medium)) if current_object.photo?
-.span-16.last#map_canvas{:style => "height: 500px;"}
+.span-17.last#map_canvas{:style => "height: 500px;"}
+%hr.plain
 

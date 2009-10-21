@@ -62,8 +62,8 @@
         #content.span-19.last
           #inner.span-17.prepend-1.last
             %hr.plain
-            - if show_title?
-              %h1= h yield(:title)
+            /- if show_title?
+            /  %h1= h yield(:title)
             = flash_messages
             = yield :layout
         /Right column here
@@ -74,9 +74,9 @@
         .append-bottom.last{:style => "text-align:center;"}
           %ul{:style => "list-style-type:none;margin:0px;float:right;margin-right:15px;"}
             %li.span-2{:style => "float:left;"}= link_to("Home", postings_path)
-            %li.span-2{:style => "float:left;"}= link_to("About Us", "")
+            %li.span-2{:style => "float:left;"}= link_to("About Us", "http://neiworld.blogspot.com/2009/10/what-is-neiworld-all-about.html")
             %li.span-2{:style => "float:left;"}= link_to("Contact Us", "")
-            %li.span-2{:style => "float:left;"}= link_to("Blog", "")
+            %li.span-2{:style => "float:left;"}= link_to("Blog", "http://neiworld.blogspot.com/")
             %li{:style => "float:left;"}= "Copyright &copy; 2009 nieworld.com"
           .clear
         - if RAILS_ENV == "production"
