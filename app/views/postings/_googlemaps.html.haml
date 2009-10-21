@@ -9,8 +9,8 @@
 .clear
 - f.fields_for :location_attributes, current_object.location do |lf|
   .span-14= text_box_with_value(lf, start_location, :text_field, :address_line, 'Your Address or Zip code', {:class => "span-14"})
-  
   .span-3.last= button_to_function("Update", "codeAddress($('posting_location_attributes_address_line').value)")
+  .span-17= "Or drag and drop you location on map"
   = lf.hidden_field :lat
   = lf.hidden_field :lng
 %hr.plain

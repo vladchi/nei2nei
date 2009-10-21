@@ -44,10 +44,12 @@ module GmapsHelper
         }
       }
 
-      function listenMarkerPosition(lmarker) {
+      function listenMarkerPosition(lmarker, place_at_start) {
         // Update current position info.
-        updateMarkerPosition(lmarker.get_position());
-        geocodePosition(lmarker.get_position());
+        if(place_at_start){
+          updateMarkerPosition(lmarker.get_position());
+          geocodePosition(lmarker.get_position());
+        }
 
         // Add dragging event listeners.
         google.maps.event.addListener(lmarker, 'dragstart', function() {
@@ -77,7 +79,7 @@ module GmapsHelper
           draggable: true
         });
 
-        //listenMarkerPosition(marker);
+        listenMarkerPosition(marker, false);
       }
 
       function codeAddress(str) {
@@ -92,7 +94,7 @@ module GmapsHelper
                   position: results[0].geometry.location,
                   draggable: true
               });
-              listenMarkerPosition(marker);
+              listenMarkerPosition(marker, true);
             }
           });
         }
