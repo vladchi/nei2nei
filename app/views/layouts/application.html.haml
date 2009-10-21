@@ -55,12 +55,12 @@
         .clear
       #main_body.span-24.last
         /Left column here
-        .span-6
+        .span-5
           \&nbsp;
           = yield :left
         /Middle column here
-        #content.span-18.last
-          #inner.span-16.prepend-1.last
+        #content.span-19.last
+          #inner.span-17.prepend-1.last
             %hr.plain
             - if show_title?
               %h1= h yield(:title)
@@ -72,12 +72,13 @@
         /  \&nbsp;
       #footer.span-24.append-bottom.last
         .append-bottom.last{:style => "text-align:center;"}
-          %ul{:style => "list-style-type:none;margin:0px;"}
+          %ul{:style => "list-style-type:none;margin:0px;float:right;margin-right:15px;"}
             %li.span-2{:style => "float:left;"}= link_to("Home", postings_path)
             %li.span-2{:style => "float:left;"}= link_to("About Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Contact Us", "")
             %li.span-2{:style => "float:left;"}= link_to("Blog", "")
             %li{:style => "float:left;"}= "Copyright &copy; 2009 nieworld.com"
+          .clear
         - if RAILS_ENV == "production"
           = google_analytics_tag
           = feedback_tag
