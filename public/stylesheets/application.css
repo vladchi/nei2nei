@@ -1,7 +1,7 @@
-body {background-color: #E0E0E0;}
+body {background-color: #fff;}
 #container {
- /*border: 1px solid #CCFF00;*/
- background-color: #F8F8F8;
+ /*border: 1px solid #7698DC;*/
+ background-color: #fff;
 }
 #header {
  background-color: #CC3333;
@@ -27,9 +27,11 @@ body {background-color: #E0E0E0;}
  padding: 5px 0px;
 }
 #nav {
- background-color: #BFD7E2;
+ background-color: #fff;
+ border-bottom: 1px dashed #333;
 }
 #main_body {
+  
 }
 #content {
  background-color: #ffffff;
@@ -37,7 +39,8 @@ body {background-color: #E0E0E0;}
 }
 #footer {
  color: black;
- background-color: #E6E6EB;
+ border-top: 1px dashed #333;
+ background-color: #fff;
  text-align: center;
  margin: 0;
  padding: 15px 0px 0px 0px;
@@ -133,8 +136,17 @@ div#flash-error {
  list-style: square;
 }
 
-.selected_category{
+/*.selected_category{
   background-color: #fff;
+}*/
+
+.selected_category a{
+  font-weight: bold;
+  color: #333;
+}
+
+.selected_category a.hover, .selected_category a:focus{
+  font-weight: bold;
 }
 
 .posting_description{
