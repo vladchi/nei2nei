@@ -49,10 +49,11 @@
       %br
       #main_body.span-24.last
         /Left column here
-        .span-5{:style => "margin: 0px 0px 0px 10px;"}
-          = yield :left
+        - if !yield(:left).blank?
+          .span-5{:style => "margin: 0px 0px 0px 10px;"}
+            = yield :left
         /Middle column here
-        #content.span-19.last
+        #content.span-19.last{:class => ("prepend-3" if yield(:left).blank?)}
           #inner.span-17.prepend-1.last
             /- if show_title?
             /  %h1= h yield(:title)
