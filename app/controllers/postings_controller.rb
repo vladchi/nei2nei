@@ -18,6 +18,10 @@ class PostingsController < ApplicationController
       current_object.user = current_user
     end
 
+    before :delete do
+      debugger
+    end
+
     response_for :create, :update do |format|
       format.html{redirect_to postings_path}
     end
