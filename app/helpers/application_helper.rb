@@ -85,4 +85,10 @@ module ApplicationHelper
       :class => ("selected_category" if params[:category].to_s == category_id.to_s))
   end
 
+  def posting_type_list_item(title, posting_type_id, params, options={})
+    content_tag(:li, link_to(title, params.merge(:posting_type => posting_type_id)),
+      :style => "float:left;margin-left:15px;",
+      :class => ("selected_category" if params[:posting_type].to_s == posting_type_id.to_s))
+  end
+
 end

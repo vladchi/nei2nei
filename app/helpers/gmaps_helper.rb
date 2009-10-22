@@ -144,7 +144,6 @@ module GmapsHelper
     options_string = options_array.join(",\n")
     markers = locations.map do |litem|
       m = <<-ENDM
-
         var latLng#{litem.id} = new google.maps.LatLng(
             #{litem.location.lat},
             #{litem.location.lng});
@@ -159,13 +158,18 @@ module GmapsHelper
         var infoWindow#{litem.id} = new google.maps.InfoWindow({
           content: [
             '<h3 style="">',
+            '<a href="#{posting_path(litem)}">',
             '#{h(litem.title)}',
+            '</a>',
             '</h3>',
             '<div style="font-size: 0.8em;">',
             '#{h(litem.description)}',
+            '<br/>',
+            '<br/>',
+            '#{h(litem.location.address_line)}',
             '</div>'
           ].join(''),
-          size: new google.maps.Size(200, 80)
+          size: new google.maps.Size(300, 200)
         });
 
         // Add marker click event listener.

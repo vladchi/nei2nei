@@ -20,7 +20,7 @@
   %body
     #container.container
       #nav.span-24.last.menu_bar
-        %h1{:style => "color:#0E394E;float:left;width:240px;margin: 0px 0px 0px 15px;"}= "Neighbor World"
+        %h1{:style => "color:#333;float:left;width:240px;margin: 0px 0px 0px 15px;"}= "Neighbor World"
         .addthis_toolbox.addthis_default_style.float_left
           = link_to("", "", :class => "addthis_button_facebook")
           = link_to("", "", :class => "addthis_button_myspace")
@@ -43,6 +43,8 @@
           .clear
           
         .clear
+      .clear
+      %br
       #main_body.span-24.last
         /Left column here
         .span-5{:style => "margin: 0px 0px 0px 10px;"}
@@ -51,7 +53,6 @@
         /Middle column here
         #content.span-19.last
           #inner.span-17.prepend-1.last
-            %hr.plain
             /- if show_title?
             /  %h1= h yield(:title)
             = flash_messages
