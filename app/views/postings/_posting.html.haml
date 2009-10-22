@@ -1,9 +1,10 @@
 %div.box[posting]
-  = link_to h(posting.title), object_path(posting)
-  |
-  = link_to 'Show on map', "", {:id => "show_posting_#{posting.id}"}
-  - permit( PostingsController::UPDATE_COND, :posting => posting ) do
-    = "|"
-    = link_to 'Edit', edit_object_path(posting)
-    = "|"
-    = link_to 'Destroy', object_path(posting), :confirm => 'Really destroy posting?', :method => :delete
+  .float_left= link_to h(posting.title), object_path(posting)
+  .controls.float_right
+    - permit( PostingsController::UPDATE_COND, :posting => posting ) do
+      = link_to 'Edit', edit_object_path(posting)
+      = "|"
+      = link_to 'Destroy', object_path(posting), :confirm => 'Really destroy posting?', :method => :delete
+      = "|"
+    = link_to 'Show on map', "", {:id => "show_posting_#{posting.id}"}
+  .clear

@@ -39,6 +39,8 @@
             - else
               = link_to t('app.menu.my_account'), edit_account_path
               |
+              = link_to "Admin", admin_root_path
+              |
               = link_to t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
           .clear
           
@@ -48,7 +50,6 @@
       #main_body.span-24.last
         /Left column here
         .span-5{:style => "margin: 0px 0px 0px 10px;"}
-          \&nbsp;
           = yield :left
         /Middle column here
         #content.span-19.last
