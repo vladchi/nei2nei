@@ -15,8 +15,9 @@
     = link_to("feedback", "http://neiworld.uservoice.com/pages/31561", :onclick => "UserVoice.Popin.show(); UserVoice.Metrics.track('tab_click_conversion', 2, 'Tab Click'); return false;")
     = "and"
     = link_to("promotion", "http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4adccf0d4d2050cb", :class => "addthis_button")
+    = "!"
   %script{:type => "text/javascript", :src => "http://s7.addthis.com/js/250/addthis_widget.js#pub=xa-4adccf0d4d2050cb"}
-.float_right= link_to '+ Add Post', new_posting_path(params_for_filters)
+.float_right= link_to '+ Add Post', new_posting_path(params_for_filters), :style => "font-size: 1.5em;"
 .clear
 %br
 .prepend-1.last{:style => "margin-left: 10px;padding: 0px;"}
