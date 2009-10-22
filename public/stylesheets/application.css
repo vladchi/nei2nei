@@ -154,6 +154,15 @@ div#flash-error {
   width: 520px;
 }
 
+#feedback_box{
+  font-weight: bold;
+  color: orange !important;
+  border: 2px solid orange;
+  padding: 3px;
+  float:left;
+  margin-left: 80px;
+}
+
 hr.plain {background:#ffffff;color:#ffffff;}  /* same as background color */
 
 .float_right{float:right;}
