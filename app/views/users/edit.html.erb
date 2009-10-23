@@ -30,7 +30,7 @@ legend {
 <%=h @user.email %> (<%= link_to t("users.edit.change_email_link"), url_for(:controller => 'change_email', :action => 'new') %>)
 </div>
 
-<% unless @user.roles.blank? %>
+<% unless true#@user.roles.blank? %>
 <div class="span-3 prepend-1">
 <b><%= User.human_attribute_name("roles") %>:</b>
 </div>
