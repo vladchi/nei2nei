@@ -102,7 +102,7 @@ module GmapsHelper
 
       google.maps.event.addDomListener(window, 'load', initialize);
     END_TEXT
-    @google_map = escape_javascript(string)
+    @google_map = string
     javascript_tag @google_map
   end
 
@@ -124,14 +124,14 @@ module GmapsHelper
         map = new google.maps.Map(document.getElementById("map_canvas"), myOpts);
         marker = new google.maps.Marker({
           position: latLng,
-          title: '#{h(posting.title)}',
+          title: '#{escape_javascript(h(posting.title))}',
           map: map,
           draggable: false
         });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     END_TEXT
-    @google_map = escape_javascript(string)
+    @google_map = string
     javascript_tag @google_map
   end
 
@@ -159,14 +159,14 @@ module GmapsHelper
           content: [
             '<h3 style="">',
             '<a href="#{posting_path(litem)}">',
-            '#{h(litem.title)}',
+            '#{escape_javascript(h(litem.title))}',
             '</a>',
             '</h3>',
             '<div style="font-size: 0.8em;">',
-            '#{h(litem.description)}',
+            '#{escape_javascript(h(litem.description))}',
             '<br/>',
             '<br/>',
-            '#{h(litem.location.address_line)}',
+            '#{escape_javascript(h(litem.location.address_line))}',
             '</div>'
           ].join(''),
           size: new google.maps.Size(300, 200)
@@ -285,7 +285,7 @@ module GmapsHelper
 
       google.maps.event.addDomListener(window, 'load', Demo.init, Demo);
     END_TEXT
-    @google_map = escape_javascript(string)
+    @google_map = string
     javascript_tag @google_map
   end
 end
