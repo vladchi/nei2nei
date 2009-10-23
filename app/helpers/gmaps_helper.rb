@@ -102,7 +102,7 @@ module GmapsHelper
 
       google.maps.event.addDomListener(window, 'load', initialize);
     END_TEXT
-    @google_map = string
+    @google_map = escape_javascript(string)
     javascript_tag @google_map
   end
 
@@ -131,7 +131,7 @@ module GmapsHelper
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     END_TEXT
-    @google_map = string
+    @google_map = escape_javascript(string)
     javascript_tag @google_map
   end
 
@@ -285,7 +285,7 @@ module GmapsHelper
 
       google.maps.event.addDomListener(window, 'load', Demo.init, Demo);
     END_TEXT
-    @google_map = string
+    @google_map = escape_javascript(string)
     javascript_tag @google_map
   end
 end
