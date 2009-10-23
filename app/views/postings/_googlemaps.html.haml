@@ -1,5 +1,6 @@
-- start_location = current_object.location
-- if params[:origin] && !start_location
+- if current_object.location && current_object.location.has_latlng?
+  - start_location = current_object.location
+- if params[:origin] && !start_location && current_object.new_record?
   - start_location = Location.new(:address_line => params[:origin])
   - start_location.valid?
 /- if session[:geo_location]

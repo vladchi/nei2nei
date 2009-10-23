@@ -20,4 +20,8 @@ class Location < ActiveRecord::Base
 
     geo.success
   end
+
+  def has_latlng?
+    !!self.lat && !!self.lng
+  end
 end
