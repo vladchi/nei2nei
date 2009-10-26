@@ -38,8 +38,9 @@
               = link_to t('app.menu.login'), new_user_session_path
             - else
               = link_to t('app.menu.my_account'), edit_account_path
-              |
-              = link_to "Admin", admin_root_path
+              - permit "site_admin or admin of User" do
+                |
+                = link_to "Admin", admin_root_path
               |
               = link_to t('app.menu.logout'), user_session_path, :method => :delete,  :confirm => t('app.menu.logout_confirm')
           .clear
