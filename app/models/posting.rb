@@ -11,6 +11,7 @@ class Posting < ActiveRecord::Base
   acts_as_mappable :through => :location
 
   validates_presence_of :title, :description, :category_id, :posting_type_id
+  validates_associated :location
 
   has_friendly_id :title, :use_slug => true
 

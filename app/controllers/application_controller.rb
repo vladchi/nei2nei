@@ -73,8 +73,8 @@ class ApplicationController < ActionController::Base
     end
 
     def set_meta_data
-      @meta_keywords = "ruby, rails, kowloon, authlogic"
-      @meta_description = "Ruby on Rails application"
+      @meta_keywords = "share, rent, neighbors"
+      @meta_description = "Share things with people around you."
     end
 
 #   before_filter :setup_mailer_defaults
